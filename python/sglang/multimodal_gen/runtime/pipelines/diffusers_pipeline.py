@@ -677,7 +677,8 @@ class DiffusersPipeline(ComposedPipelineBase):
     def create_pipeline_stages(self, server_args: ServerArgs) -> None:
         """Create the execution stage wrapping the diffusers pipeline."""
         self.add_stage(
-            DiffusersExecutionStage(self.diffusers_pipe), "diffusers_execution"
+            stage_name="diffusers_execution",
+            stage=DiffusersExecutionStage(self.diffusers_pipe),
         )
 
     def initialize_pipeline(self, server_args: ServerArgs) -> None:
